@@ -115,8 +115,8 @@ class SLP(object):
         plt.legend()
 
         plt.figure(2)
-        plt.plot(self.accuracy_training_list, color = 'green', label = 'training')
-        plt.plot(self.accuracy_test_list, color = 'red', label = 'test')
+        plt.plot(np.arange(self.epoch), self.accuracy_training_list, color = 'green', label = 'training')
+        plt.plot(np.arange(self.epoch), self.accuracy_test_list, color = 'red', label = 'test')
         plt.title('Accuracy')
         plt.xlabel('Epoch')
         plt.ylabel('Average accuracies @epoch')
@@ -127,7 +127,7 @@ class SLP(object):
 def main():
     iris_data = pd.read_csv('iris.csv').values
 
-    slp = SLP(iris_data, epoch = 5, k = 5, alpha = 0.1)
+    slp = SLP(iris_data, epoch = 300, k = 5, alpha = 0.1)
     slp.train()
     slp.plot()
 
